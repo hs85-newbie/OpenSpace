@@ -906,7 +906,9 @@ def run_mcp_server() -> None:
     args = parser.parse_args()
 
     if args.transport == "sse":
-        mcp.run(transport="sse", sse_params={"port": args.port})
+        os.environ.setdefault("PORT", str(args.port))
+        os.environ.setdefault("HOST", "0.0.0.0")
+        mcp.run(transport="sse")
     else:
         mcp.run(transport="stdio")
 
