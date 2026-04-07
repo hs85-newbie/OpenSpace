@@ -1,0 +1,9 @@
+assets/
+frontend/
+gdpval_bench/
+showcase/
+.git/
+*.md
+__pycache__/
+*.pyc
+.env
