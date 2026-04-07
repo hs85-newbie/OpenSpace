@@ -906,8 +906,8 @@ def run_mcp_server() -> None:
     args = parser.parse_args()
 
     if args.transport == "sse":
-        os.environ.setdefault("PORT", str(args.port))
-        os.environ.setdefault("HOST", "0.0.0.0")
+        os.environ.setdefault("FASTMCP_PORT", str(args.port))
+        os.environ.setdefault("FASTMCP_HOST", "0.0.0.0")
         mcp.run(transport="sse")
     else:
         mcp.run(transport="stdio")
