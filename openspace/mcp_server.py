@@ -113,6 +113,14 @@ try:
 except (TypeError, ValueError):
     pass
 
+# Railway/SSE deployment: allow host/port override via env
+_mcp_host = os.environ.get("FASTMCP_HOST") or os.environ.get("MCP_HOST")
+_mcp_port = os.environ.get("FASTMCP_PORT") or os.environ.get("MCP_PORT")
+if _mcp_host:
+    _fastmcp_kwargs["host"] = _mcp_host
+if _mcp_port:
+    _fastmcp_kwargs["port"] = int(_mcp_port)
+
 mcp = FastMCP("OpenSpace", **_fastmcp_kwargs)
 
 _openspace_instance = None
